@@ -1,0 +1,786 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://sofka-practices.github.io/overall-arch/">
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.4">
+    
+    
+      
+        <title>Overall Architecture</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.240905d7.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#atributos-de-calidad" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="." title="Overall Architecture" class="md-header__button md-logo" aria-label="Overall Architecture" data-md-component="logo">
+      
+  <img src="assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Overall Architecture
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent=""  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartir" aria-label="Compartir" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sofka-practices/overall-arch/" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Overall Architecture" class="md-nav__button md-logo" aria-label="Overall Architecture" data-md-component="logo">
+      
+  <img src="assets/logo.png" alt="logo">
+
+    </a>
+    Overall Architecture
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sofka-practices/overall-arch/" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+          Principios Bases de Programación
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Principios Bases de Programación
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="base.md" class="md-nav__link">
+        Resumen
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-calidad" class="md-nav__link">
+    Atributos de calidad
+  </a>
+  
+    <nav class="md-nav" aria-label="Atributos de calidad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tacticas-de-arquitectura" class="md-nav__link">
+    Tácticas de Arquitectura
+  </a>
+  
+    <nav class="md-nav" aria-label="Tácticas de Arquitectura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tecnologias-o-enfoques" class="md-nav__link">
+    Tecnologías o Enfoques
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principios-de-programacion" class="md-nav__link">
+    Principios de Programación
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tecnologias-cloud" class="md-nav__link">
+    Tecnologías Cloud
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-reactivas" class="md-nav__link">
+    Arquitectura Reactivas
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/sofka-practices/overall-arch/edit/main/docs/index.md" title="Editar esta página" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>Home</h1>
+
+<h2 id="atributos-de-calidad">Atributos de calidad</h2>
+<p>Los atributos de calidad son características o propiedades que se utilizan para evaluar y medir la calidad de un producto o servicio. Estos atributos son importantes en diferentes ámbitos, como el desarrollo de software, la ingeniería, la gestión de proyectos, la producción industrial y muchos otros. A continuación, se presentan algunos de los atributos de calidad más comunes:</p>
+<ol>
+<li>
+<p>Funcionalidad: Se refiere a la capacidad de un producto o servicio para cumplir con sus funciones previstas y satisfacer los requisitos especificados. En el caso del software, esto implica que todas las funciones y características deben trabajar correctamente y sin errores.</p>
+</li>
+<li>
+<p>Confiabilidad: La confiabilidad se relaciona con la capacidad de un producto o servicio para realizar su función de manera consistente durante un período de tiempo determinado y bajo ciertas condiciones. Implica que el producto o servicio debe ser resistente a fallos y mantener un rendimiento estable.</p>
+</li>
+<li>
+<p>Usabilidad: La usabilidad se refiere a la facilidad con la que los usuarios pueden interactuar con un producto o servicio para lograr sus objetivos. Un producto con alta usabilidad es fácil de aprender, usar y recordar, y minimiza los errores del usuario.</p>
+</li>
+<li>
+<p>Eficiencia: Este atributo se centra en la optimización de los recursos utilizados para realizar una tarea o función. Un producto eficiente debe realizar su trabajo de manera rápida y consumir una cantidad razonable de recursos, como tiempo, energía o materiales.</p>
+</li>
+<li>
+<p>Mantenibilidad: La mantenibilidad se refiere a la facilidad con la que un producto o sistema puede modificarse, repararse o mejorarse. En el desarrollo de software, esto implica que el código debe ser fácil de entender y cambiar, facilitando las actualizaciones y correcciones.</p>
+</li>
+<li>
+<p>Portabilidad: La portabilidad se relaciona con la capacidad de un producto o sistema para ser transferido o adaptado a diferentes entornos o plataformas sin perder funcionalidad o rendimiento.</p>
+</li>
+<li>
+<p>Seguridad: La seguridad es crítica en muchos contextos. Se refiere a la capacidad de un producto o servicio para protegerse contra amenazas internas o externas y evitar vulnerabilidades que puedan conducir a situaciones peligrosas o comprometer la privacidad de los usuarios.</p>
+</li>
+<li>
+<p>Escalabilidad: La escalabilidad se aplica principalmente a sistemas y servicios que deben manejar una mayor carga de trabajo o usuarios en el futuro. Un producto escalable puede aumentar su capacidad de manera efectiva sin perder rendimiento o eficiencia.</p>
+</li>
+<li>
+<p>Interoperabilidad: La interoperabilidad se refiere a la capacidad de un producto o sistema para comunicarse e interactuar con otros productos o sistemas de manera efectiva y sin problemas.</p>
+</li>
+<li>
+<p>Adaptabilidad: La adaptabilidad implica la capacidad de un producto o sistema para ajustarse y responder a cambios en el entorno, requisitos o necesidades del usuario.</p>
+</li>
+</ol>
+<h3 id="tacticas-de-arquitectura">Tácticas de Arquitectura</h3>
+<table>
+<thead>
+<tr>
+<th>Atributo de Calidad</th>
+<th>Tácticas de Arquitectura</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Funcionalidad</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Modularity">Modularidad</a>: Dividir el sistema en módulos funcionales y bien definidos, lo que facilita la gestión y el desarrollo independiente de cada componente. <br> - <a href="https://en.wikipedia.org/wiki/Multilayered_architecture">Capas</a>: Separar las diferentes capas de funcionalidad, como la capa de presentación, lógica de negocio y persistencia de datos, para mejorar la claridad y el mantenimiento del sistema.</td>
+</tr>
+<tr>
+<td>Confiabilidad</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Replication_(computing)">Replicación</a>: Utilizar réplicas para garantizar la disponibilidad y la redundancia del sistema. Al contar con múltiples instancias de componentes críticos, se mejora la tolerancia a fallos y se evita un único punto de falla. <br> - <a href="https://en.wikipedia.org/wiki/Error_handling">Manejo de errores</a>: Implementar mecanismos para detectar y recuperarse de errores inesperados. Esto puede incluir el uso de registros de errores, manejo de excepciones y estrategias de reintento para operaciones fallidas.</td>
+</tr>
+<tr>
+<td>Usabilidad</td>
+<td>- <a href="https://www.interaction-design.org/literature/topics/usability">Interfaz de usuario intuitiva</a>: Diseñar una interfaz fácil de usar y entender para los usuarios, teniendo en cuenta principios de diseño centrados en el usuario y la experiencia del usuario (UX). <br> - <a href="https://www.nngroup.com/articles/ten-usability-heuristics/">Feedback</a>: Proporcionar retroalimentación clara y útil para guiar a los usuarios en sus acciones, como mensajes de confirmación, indicadores de carga y notificaciones contextuales.</td>
+</tr>
+<tr>
+<td>Eficiencia</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Cache_(computing)">Caching</a>: Utilizar técnicas de almacenamiento en caché para mejorar el rendimiento y reducir la carga en servicios y bases de datos. Esto puede incluir caché de datos, caché de resultados de cálculos y caché de consultas. <br> - <a href="https://en.wikipedia.org/wiki/Parallel_computing">Paralelismo</a>: Aprovechar el paralelismo y la concurrencia para realizar tareas simultáneas y acelerar el procesamiento, especialmente en operaciones intensivas en cómputo.</td>
+</tr>
+<tr>
+<td>Mantenibilidad</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Loose_coupling">Desacoplamiento</a>: Reducir las dependencias entre componentes para facilitar cambios futuros sin afectar a otros módulos. La aplicación de patrones de diseño como Inyección de Dependencias y el principio de Responsabilidad Única puede ayudar en este aspecto. <br> - <a href="https://en.wikipedia.org/wiki/Software_documentation">Documentación</a>: Mantener una documentación clara y detallada que describa la arquitectura, el diseño, las decisiones clave y las funcionalidades del sistema. Esto facilita la comprensión del sistema para el equipo de desarrollo y futuras actualizaciones.</td>
+</tr>
+<tr>
+<td>Portabilidad</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Abstraction_of_computer_systems">Abstracción de plataforma</a>: Utilizar una capa de abstracción para aislar el sistema de la plataforma subyacente y permitir su ejecución en diferentes entornos. Esto se logra mediante el uso de contenedores, como Docker, que proporcionan una abstracción del sistema operativo y la infraestructura. <br> - <a href="https://en.wikipedia.org/wiki/Standard">Estándares y protocolos</a>: Adoptar estándares y protocolos comunes, como HTTP/HTTPS, JSON o REST, para facilitar la interoperabilidad con otros sistemas y aplicaciones.</td>
+</tr>
+<tr>
+<td>Seguridad</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Authentication">Autenticación y autorización</a>: Implementar mecanismos para verificar la identidad de los usuarios y controlar sus permisos de acceso al sistema y a los datos. Esto puede lograrse mediante el uso de técnicas de autenticación, como JWT o OAuth, y la aplicación de políticas de control de acceso. <br> - <a href="https://en.wikipedia.org/wiki/Encryption">Encriptación</a>: Utilizar encriptación para proteger datos confidenciales y comunicaciones, como el uso de SSL/TLS para cifrar la transmisión de datos entre el cliente y el servidor.</td>
+</tr>
+<tr>
+<td>Escalabilidad</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling">Escalabilidad horizontal</a>: Aumentar la capacidad del sistema agregando más instancias o nodos para manejar cargas crecientes. Esta estrategia se beneficia del uso de tecnologías de orquestación de contenedores, como Kubernetes, para gestionar el escalado automático. <br> - <a href="https://en.wikipedia.org/wiki/Partition_(database)">Particionamiento</a>: Dividir los datos y la carga de trabajo en particiones para distribuir la carga entre diferentes componentes y lograr una mejor utilización de recursos.</td>
+</tr>
+<tr>
+<td>Interoperabilidad</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Open_standard">APIs y estándares abiertos</a>: Exponer APIs públicas y adoptar estándares abiertos para permitir la integración con otros sistemas y aplicaciones de terceros. Esto facilita la colaboración y la reutilización de servicios. <br> - <a href="https://en.wikipedia.org/wiki/Message_passing">Comunicación basada en mensajes</a>: Utilizar mensajes para la comunicación entre componentes, lo que facilita la interoperabilidad y permite que los servicios se comuniquen de manera asíncrona y desacoplada.</td>
+</tr>
+<tr>
+<td>Adaptabilidad</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Configurability">Configurabilidad</a>: Hacer que el sistema sea configurable para adaptarse a diferentes escenarios y requisitos sin necesidad de cambios en el código fuente. Esto puede incluir la configuración de parámetros, políticas y reglas en tiempo de ejecución. <br> - <a href="https://en.wikipedia.org/wiki/Plug_and_play">Módulos plug-and-play</a>: Permitir la incorporación y eliminación de módulos o componentes sin afectar la funcionalidad global del sistema. Esto se logra mediante interfaces bien definidas y una arquitectura basada en componentes intercambiables.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="tecnologias-o-enfoques">Tecnologías o Enfoques</h4>
+<table>
+<thead>
+<tr>
+<th>Atributo de Calidad</th>
+<th>Tecnologías o Enfoques</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Funcionalidad</td>
+<td>- Lenguajes de programación como Java, C#, Python, etc., que ofrecen amplias capacidades de desarrollo de software. <br> - Frameworks y bibliotecas como Spring, .NET, Django, que facilitan la implementación de funcionalidades comunes.</td>
+</tr>
+<tr>
+<td>Confiabilidad</td>
+<td>- Tolerancia a fallos: Uso de tecnologías como replicación, clústeres, y sistemas de alta disponibilidad para mitigar fallos. <br> - Pruebas de carga y rendimiento para evaluar el comportamiento del sistema bajo diferentes condiciones.</td>
+</tr>
+<tr>
+<td>Usabilidad</td>
+<td>- Frameworks de interfaz de usuario como React, Angular, o Vue.js para construir interfaces de usuario atractivas y fáciles de usar. <br> - Diseño centrado en el usuario para asegurar que el producto sea intuitivo y cumpla con las expectativas del usuario.</td>
+</tr>
+<tr>
+<td>Eficiencia</td>
+<td>- Almacenamiento en caché utilizando tecnologías como Redis o Memcached para acelerar el acceso a datos frecuentemente utilizados. <br> - Computación en la nube y escalado automático para gestionar la carga de trabajo variable.</td>
+</tr>
+<tr>
+<td>Mantenibilidad</td>
+<td>- Control de versiones utilizando sistemas como Git para rastrear cambios en el código y facilitar la colaboración en equipos. <br> - Herramientas de análisis estático de código para identificar posibles problemas y mantener la calidad del código.</td>
+</tr>
+<tr>
+<td>Portabilidad</td>
+<td>- Contenedores como Docker para empaquetar aplicaciones con sus dependencias y ejecutarlas en diferentes entornos. <br> - Plataformas de nube como AWS, Azure o Google Cloud que permiten desplegar aplicaciones en múltiples ubicaciones geográficas.</td>
+</tr>
+<tr>
+<td>Seguridad</td>
+<td>- HTTPS y certificados SSL/TLS para proteger la comunicación entre el cliente y el servidor. <br> - Soluciones de autenticación multifactor (MFA) para reforzar la seguridad de las cuentas de usuario.</td>
+</tr>
+<tr>
+<td>Escalabilidad</td>
+<td>- Arquitectura de microservicios para descomponer el sistema en componentes independientes y escalables. <br> - Bases de datos NoSQL, como MongoDB o Cassandra, para manejar grandes volúmenes de datos y distribuir la carga.</td>
+</tr>
+<tr>
+<td>Interoperabilidad</td>
+<td>- APIs (Interfaces de Programación de Aplicaciones) para permitir que diferentes sistemas se comuniquen entre sí de manera estandarizada. <br> - Estándares y protocolos comunes, como REST, JSON o XML, para facilitar la integración con otros sistemas.</td>
+</tr>
+<tr>
+<td>Adaptabilidad</td>
+<td>- Configurabilidad mediante archivos de configuración que permitan ajustar el comportamiento del sistema sin necesidad de modificar el código. <br> - Uso de patrones de diseño como Inyección de Dependencias para hacer que el sistema sea más flexible y fácilmente adaptable a cambios.</td>
+</tr>
+</tbody>
+</table>
+<p>Es importante destacar que la elección de tecnologías adecuadas dependerá de los requisitos específicos del proyecto, las necesidades del cliente y las habilidades del equipo de desarrollo. Además, algunos atributos de calidad pueden requerir la combinación de múltiples tecnologías para lograr los mejores resultados.</p>
+<h3 id="principios-de-programacion">Principios de Programación</h3>
+<table>
+<thead>
+<tr>
+<th>Atributo de Calidad</th>
+<th>Principios de Programación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Funcionalidad</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Single-responsibility_principle">Principio de responsabilidad única (SRP)</a>: Cada clase o módulo debe tener una única responsabilidad. Esto facilita la comprensión y el mantenimiento del código, mejorando la funcionalidad. <br> - <a href="https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle">Principio de apertura/cerrado (OCP)</a>: El código debe estar abierto para extenderse pero cerrado para modificarse. Esto permite agregar nuevas funcionalidades sin modificar el código existente.</td>
+</tr>
+<tr>
+<td>Confiabilidad</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Exception_handling">Principio de manejo de excepciones</a>: El código debe manejar adecuadamente las excepciones y errores para mantener la estabilidad del sistema y proporcionar retroalimentación al usuario. <br> - <a href="https://en.wikipedia.org/wiki/Design_by_contract">Principio de diseño por contrato</a>: Utilizar afirmaciones pre y postcondiciones para garantizar que los componentes interactúen de manera predecible y segura.</td>
+</tr>
+<tr>
+<td>Usabilidad</td>
+<td>- <a href="https://en.wikipedia.org/wiki/KISS_principle">Principio de simplicidad</a>: Mantener el código simple y fácil de entender para facilitar el uso y la colaboración en el equipo. <br> - <a href="https://en.wikipedia.org/wiki/Meaningful_variable_names">Principio de nombre significativo</a>: Utilizar nombres de variables y funciones que reflejen claramente su propósito, mejorando la legibilidad y la comprensión del código.</td>
+</tr>
+<tr>
+<td>Eficiencia</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Minimize_(software_implementation)">Principio de minimización</a>: Reducir el uso innecesario de recursos, como ciclos de CPU o memoria, para mejorar la eficiencia del sistema. <br> - <a href="https://en.wikipedia.org/wiki/Program_optimization#When_to_optimize">Principio de optimización tardía</a>: Evitar la optimización prematura y centrarse en mantener un código limpio y legible hasta que se identifiquen puntos críticos de rendimiento.</td>
+</tr>
+<tr>
+<td>Mantenibilidad</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">Principio de código DRY (Don't Repeat Yourself)</a>: Evitar la duplicación de código para facilitar su mantenimiento y evitar posibles errores. <br> - <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">Principio de separación de intereses (SoC)</a>: Separar las preocupaciones y funcionalidades diferentes en módulos o clases independientes para facilitar las actualizaciones y mejoras.</td>
+</tr>
+<tr>
+<td>Portabilidad</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Platform_abstraction">Principio de abstracción de la plataforma</a>: Aislar el código de dependencias específicas de la plataforma para facilitar la portabilidad. <br> - <a href="https://en.wikipedia.org/wiki/Backward_compatibility">Principio de compatibilidad hacia atrás</a>: Mantener la compatibilidad con versiones anteriores para garantizar que el software se pueda ejecutar en diferentes entornos.</td>
+</tr>
+<tr>
+<td>Seguridad</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Principle_of_least_privilege">Principio de mínimo privilegio</a>: Conceder a cada componente o usuario solo los permisos necesarios para realizar sus funciones, reduciendo posibles vulnerabilidades. <br> - <a href="https://en.wikipedia.org/wiki/Data_validation">Principio de validación de datos</a>: Validar y sanitizar adecuadamente los datos de entrada para prevenir ataques como inyección de código.</td>
+</tr>
+<tr>
+<td>Escalabilidad</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">Principio de separación de preocupaciones (SoC)</a>: Dividir la aplicación en componentes independientes que puedan escalarse individualmente. <br> - <a href="https://en.wikipedia.org/wiki/Parallel_computing#Parallel_programming_models">Principio de paralelismo</a>: Utilizar hilos o procesos paralelos para dividir la carga de trabajo y mejorar la escalabilidad.</td>
+</tr>
+<tr>
+<td>Interoperabilidad</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Abstraction_of_interfaces">Principio de abstracción de interfaces</a>: Definir interfaces claras y bien documentadas para interactuar con otros sistemas de manera estándar. <br> - <a href="https://en.wikipedia.org/wiki/Standard_compliance">Principio de adhesión a estándares</a>: Utilizar protocolos y formatos de datos comunes para facilitar la interoperabilidad con otros sistemas.</td>
+</tr>
+<tr>
+<td>Adaptabilidad</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle">Principio de inversión de dependencias (DIP)</a>: Permitir que los módulos dependan de abstracciones en lugar de implementaciones concretas, lo que facilita la sustitución y adaptación de componentes. <br> - <a href="https://en.wikipedia.org/wiki/Composition_over_inheritance">Principio de composición sobre herencia</a>: Utilizar composición para agregar funcionalidad y permitir que los objetos cambien de comportamiento en tiempo de ejecución.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tecnologias-cloud">Tecnologías Cloud</h3>
+<p>A continuación, se presentan las referencias aplicadas a las palabras clave de la tabla:</p>
+<table>
+<thead>
+<tr>
+<th>Atributo de Calidad</th>
+<th>Tecnologías Cloud Native</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Funcionalidad</td>
+<td>- <a href="https://www.docker.com/resources/what-container">Contenedores</a>: Tecnologías como Docker permiten empaquetar aplicaciones y sus dependencias para facilitar su implementación y distribución en entornos cloud. <br> - <a href="https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/">Orquestación de Contenedores</a>: Kubernetes es una popular plataforma para la gestión automatizada de contenedores, escalado y balanceo de carga.</td>
+</tr>
+<tr>
+<td>Confiabilidad</td>
+<td>- <a href="https://aws.amazon.com/autoscaling/">Autoescalado</a>: Las plataformas cloud nativas ofrecen el autoescalado, que ajusta automáticamente el número de instancias en función de la carga, mejorando la disponibilidad y el rendimiento. <br> - <a href="https://prometheus.io/">Monitoreo y registro</a>: Herramientas como Prometheus y Grafana permiten supervisar y registrar el estado y el rendimiento del sistema en tiempo real.</td>
+</tr>
+<tr>
+<td>Usabilidad</td>
+<td>- <a href="https://www.terraform.io/">Infraestructura como código (IaC)</a>: El uso de herramientas como Terraform o CloudFormation facilita la creación y gestión de recursos de infraestructura de manera programática y reproducible. <br> - <a href="https://azure.microsoft.com/en-us/overview/what-is-paas/">Plataformas de Desarrollo como Servicio (PaaS)</a>: Ofrecen entornos preconfigurados para el desarrollo y despliegue de aplicaciones sin preocuparse por la infraestructura subyacente.</td>
+</tr>
+<tr>
+<td>Eficiencia</td>
+<td>- <a href="https://aws.amazon.com/lambda/">Funciones como Servicio (FaaS)</a>: Plataformas como AWS Lambda o Azure Functions permiten ejecutar funciones individuales en respuesta a eventos, reduciendo el uso de recursos. <br> - <a href="https://microservices.io/">Arquitectura de microservicios</a>: Facilita la escalabilidad y el despliegue independiente de componentes, lo que mejora la eficiencia y el tiempo de desarrollo.</td>
+</tr>
+<tr>
+<td>Mantenibilidad</td>
+<td>- <a href="https://www.jenkins.io/">Despliegue continuo (Continuous Deployment)</a>: Con herramientas como Jenkins o GitLab CI/CD, es posible automatizar el proceso de despliegue, mejorando la velocidad y facilidad de actualización. <br> - <a href="https://www.gitops.tech/">GitOps</a>: Una práctica que utiliza repositorios Git para gestionar la infraestructura y las configuraciones del sistema, facilitando la colaboración y el control de versiones.</td>
+</tr>
+<tr>
+<td>Portabilidad</td>
+<td>- <a href="https://kubernetes.io/">Contenedores y Kubernetes</a>: Permiten que las aplicaciones se ejecuten de manera consistente en múltiples entornos, ya sea localmente, en la nube o en entornos híbridos. <br> - <a href="https://aws.amazon.com/what-is-cloud-computing/">Plataformas de nube pública</a>: Como AWS, Azure o Google Cloud, que permiten implementar aplicaciones en diferentes regiones geográficas.</td>
+</tr>
+<tr>
+<td>Seguridad</td>
+<td>- <a href="https://istio.io/latest/docs/concepts/what-is-istio/">Service Mesh</a>: Tecnologías como Istio o Linkerd facilitan la seguridad de la comunicación entre servicios y la aplicación de políticas de control de acceso. <br> - <a href="https://aws.amazon.com/iam/">Gestión de Identidad y Acceso (IAM)</a>: Las plataformas cloud nativas ofrecen servicios de IAM para controlar y auditar el acceso a los recursos.</td>
+</tr>
+<tr>
+<td>Escalabilidad</td>
+<td>- <a href="https://kubernetes.io/">Orquestación de Contenedores</a>: Kubernetes y otros sistemas de orquestación permiten el escalado horizontal y vertical de manera dinámica. <br> - <a href="https://cassandra.apache.org/">Bases de datos escalables</a>: Las bases de datos NoSQL como Cassandra o DynamoDB permiten escalar horizontalmente para manejar cargas crecientes.</td>
+</tr>
+<tr>
+<td>Interoperabilidad</td>
+<td>- <a href="https://www.redhat.com/es/topics/api/what-are-application-programming-interfaces">APIs y estándares abiertos</a>: Utilizar APIs públicas y estándares comunes para facilitar la integración con otras aplicaciones o servicios. <br> - <a href="https://microservices.io/patterns/microservices.html">Enfoque de arquitectura basado en microservicios</a>: Facilita la comunicación y la interoperabilidad entre diferentes servicios.</td>
+</tr>
+<tr>
+<td>Adaptabilidad</td>
+<td>- <a href="https://aws.amazon.com/elasticloadbalancing/">Infraestructura elástica</a>: Con tecnologías cloud native, se pueden escalar recursos automáticamente según las demandas cambiantes. <br> - <a href="https://www.consul.io/">Gestión dinámica de la configuración</a>: Utilizar herramientas como Consul o etcd para gestionar la configuración de manera dinámica sin necesidad de reiniciar aplicaciones.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="arquitectura-reactivas">Arquitectura Reactivas</h2>
+<p>Las arquitecturas reactivas son un enfoque para el diseño de sistemas de software que buscan abordar desafíos comunes en aplicaciones modernas, como la escalabilidad, la resiliencia, la concurrencia y la capacidad de respuesta. Este enfoque se basa en principios y patrones específicos para manejar sistemas complejos y distribuidos en entornos en tiempo real y altamente concurrentes.</p>
+<ol>
+<li>Resiliente: Las arquitecturas reactivas están diseñadas para ser resistentes a fallos y a eventos inesperados. Se busca que el sistema pueda recuperarse de fallos y garantizar la continuidad del servicio, lo que lo hace adecuado para entornos en la nube o distribuidos.</li>
+</ol>
+<p>Referencia: <a href="https://www.reactivemanifesto.org/">Reactive Manifesto</a></p>
+<ol>
+<li>Elástico y escalable: Las aplicaciones reactivas son capaces de escalar automáticamente para manejar cambios en la carga de trabajo. Esto se logra mediante técnicas como el autoescalado, el equilibrio de carga y el uso de sistemas de orquestación de contenedores, como Kubernetes.</li>
+</ol>
+<p>Referencia: <a href="https://www.reactivemanifesto.org/glossary#Reactive-Scaling">Reactive Scaling</a></p>
+<ol>
+<li>Responsivo: Las arquitecturas reactivas se esfuerzan por ser altamente responsivas ante las solicitudes del usuario. Esto significa que el sistema puede responder rápidamente a las interacciones del usuario, lo que mejora la experiencia del usuario y evita tiempos de espera prolongados.</li>
+</ol>
+<p>Referencia: <a href="https://www.reactivemanifesto.org/glossary#Responsive">Responsive</a></p>
+<ol>
+<li>Orientado a mensajes: La comunicación entre los diferentes componentes del sistema se basa en el intercambio de mensajes, lo que facilita la interoperabilidad y la adaptabilidad. Esto permite que los componentes se comuniquen de manera asíncrona y se acoplen de manera flexible.</li>
+</ol>
+<p>Referencia: <a href="https://www.reactivemanifesto.org/glossary#Message-Driven">Message-Driven</a></p>
+<ol>
+<li>Basado en streams: Las arquitecturas reactivas a menudo utilizan flujos de datos o streams para manejar secuencias de eventos. Esto permite un procesamiento continuo y en tiempo real de los datos, lo que es especialmente útil en aplicaciones que deben manejar grandes volúmenes de información.</li>
+</ol>
+<p>Referencia: <a href="https://www.reactivemanifesto.org/glossary#Event-Driven">Event-Driven</a></p>
+<ol>
+<li>Programación reactiva: En el desarrollo de aplicaciones reactivas, se utiliza la programación reactiva para manejar la concurrencia y la asincronía de manera eficiente. Esto implica el uso de patrones como Observables, Streams o Promises para trabajar con flujos de datos asincrónicos.</li>
+</ol>
+<p>Referencia: <a href="https://www.reactivemanifesto.org/glossary#Reactive-Programming">Reactive Programming</a></p>
+<ol>
+<li>Microservicios y desacoplamiento: Las arquitecturas reactivas a menudo se implementan mediante microservicios, lo que permite el desacoplamiento y la independencia de cada componente. Esto facilita la evolución, el mantenimiento y la escalabilidad de las partes individuales del sistema.</li>
+</ol>
+<p>Referencia: <a href="https://www.reactivemanifesto.org/glossary#Microservices">Microservices</a></p>
+<p>Las arquitecturas reactivas son especialmente relevantes en aplicaciones modernas que deben manejar grandes cantidades de datos, ofrecer una experiencia de usuario en tiempo real y mantenerse disponibles y confiables en todo momento. Estos principios y patrones de diseño pueden aplicarse en una variedad de contextos, incluyendo sistemas web, aplicaciones móviles, IoT (Internet de las cosas), entre otros.</p>
+<p>A continuación, te presento un mapeo de las características clave de las arquitecturas reactivas con algunas tecnologías y herramientas que se utilizan comúnmente para implementar este enfoque:</p>
+<table>
+<thead>
+<tr>
+<th>Característica clave</th>
+<th>Tecnologías y Herramientas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resiliente</td>
+<td>- Circuit Breaker: <a href="https://github.com/Netflix/Hystrix">Hystrix</a> o <a href="https://resilience4j.readme.io/">Resilience4j</a> son bibliotecas que permiten implementar el patrón de circuit breaker para manejar errores y fallos de forma controlada. <br> - Supervisor de Actores: Frameworks como <a href="https://akka.io/">Akka</a> o <a href="https://www.erlang.org/">Erlang OTP</a> permiten el desarrollo de sistemas altamente tolerantes a fallos a través de actores y patrones de supervisión.</td>
+</tr>
+<tr>
+<td>Elástico y escalable</td>
+<td>- Kubernetes: Plataforma de orquestación de contenedores que permite escalar automáticamente las aplicaciones según la demanda. <br> - Autoescalado en la nube: Los proveedores de servicios en la nube, como <a href="https://aws.amazon.com/">AWS</a> o <a href="https://cloud.google.com/">Google Cloud</a>, ofrecen servicios de autoescalado para ajustar la capacidad según la carga.</td>
+</tr>
+<tr>
+<td>Responsivo</td>
+<td>- React.js: Biblioteca de JavaScript para construir interfaces de usuario altamente responsivas y reactivas. <br> - Reactive Streams: Especificación que proporciona un conjunto de interfaces para manejar flujos de datos de manera asincrónica y reactivo.</td>
+</tr>
+<tr>
+<td>Orientado a mensajes</td>
+<td>- <a href="https://kafka.apache.org/">Apache Kafka</a>: Plataforma de streaming distribuida que permite la comunicación asincrónica y el procesamiento de eventos en tiempo real. <br> - <a href="https://www.rabbitmq.com/">RabbitMQ</a>: Sistema de mensajería que facilita la comunicación entre microservicios mediante colas de mensajes.</td>
+</tr>
+<tr>
+<td>Basado en streams</td>
+<td>- <a href="https://flink.apache.org/">Apache Flink</a>: Motor de procesamiento de datos en tiempo real que permite el análisis continuo de flujos de datos. <br> - <a href="https://github.com/ReactiveX/RxJava">RxJava</a>: Librería para la programación reactiva en Java que permite trabajar con flujos de datos asincrónicos.</td>
+</tr>
+<tr>
+<td>Programación reactiva</td>
+<td>- <a href="https://projectreactor.io/">Reactor</a>: Biblioteca que implementa la programación reactiva en Java. <br> - <a href="https://doc.akka.io/docs/akka/current/stream/index.html">Akka Streams</a>: Librería para la programación reactiva basada en actores y flujos en Akka.</td>
+</tr>
+<tr>
+<td>Microservicios</td>
+<td>- <a href="https://spring.io/projects/spring-boot">Spring Boot</a>: Framework para el desarrollo de microservicios en Java que facilita la configuración y el despliegue. <br> - <a href="https://micronaut.io/">Micronaut</a>: Framework ligero para microservicios que ofrece un tiempo de arranque rápido y un bajo consumo de memoria.</td>
+</tr>
+<tr>
+<td>Desacoplamiento</td>
+<td>- API Gateway: Tecnología que proporciona un punto de entrada único para las solicitudes de los clientes y maneja la comunicación con los microservicios. <br> - Contenedores y Kubernetes: Permiten encapsular y aislar componentes individuales para lograr un alto grado de desacoplamiento.</td>
+</tr>
+</tbody>
+</table>
+<p>Es importante mencionar que estas tecnologías y herramientas son solo ejemplos y que hay muchas otras opciones disponibles para implementar arquitecturas reactivas. Además, el uso de estas tecnologías dependerá de los requisitos y la complejidad específicos de cada proyecto. Las arquitecturas reactivas son un enfoque flexible y escalable que se adapta bien a un amplio espectro de aplicaciones y casos de uso.</p>
+<table>
+<thead>
+<tr>
+<th>Característica clave</th>
+<th>Tecnologías y Enfoques Cloud Native</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resiliente</td>
+<td><a href="https://martinfowler.com/bliki/CircuitBreaker.html">Circuit Breaker</a>, Plataformas de orquestación de contenedores (por ejemplo, <a href="https://kubernetes.io/">Kubernetes</a>)</td>
+</tr>
+<tr>
+<td>Elástico y escalable</td>
+<td><a href="https://kubernetes.io/">Kubernetes</a>, Plataformas cloud (por ejemplo, <a href="https://aws.amazon.com/">AWS</a>, <a href="https://cloud.google.com/">Google Cloud</a>, <a href="https://azure.microsoft.com/">Microsoft Azure</a>)</td>
+</tr>
+<tr>
+<td>Responsivo</td>
+<td>Arquitectura de microservicios, Reactive Streams (por ejemplo, <a href="https://www.reactive-streams.org/">Reactive Streams</a>)</td>
+</tr>
+<tr>
+<td>Orientado a mensajes</td>
+<td><a href="https://kafka.apache.org/">Apache Kafka</a>, Servicios de mensajería (por ejemplo, <a href="https://www.rabbitmq.com/">RabbitMQ</a>, <a href="https://aws.amazon.com/sqs/">Amazon SQS</a>)</td>
+</tr>
+<tr>
+<td>Basado en streams</td>
+<td><a href="https://flink.apache.org/">Apache Flink</a>, <a href="https://beam.apache.org/">Apache Beam</a>, Servicios de streaming en la nube (por ejemplo, <a href="https://aws.amazon.com/kinesis/">Amazon Kinesis</a>, <a href="https://cloud.google.com/dataflow/">Google Cloud Dataflow</a>)</td>
+</tr>
+<tr>
+<td>Programación reactiva</td>
+<td><a href="https://projectreactor.io/">Reactor</a>, <a href="https://doc.akka.io/docs/akka/current/stream/index.html">Akka Streams</a></td>
+</tr>
+<tr>
+<td>Microservicios</td>
+<td>Contenedores (por ejemplo, <a href="https://www.docker.com/">Docker</a>), Plataformas de desarrollo como servicio (PaaS) (por ejemplo, <a href="https://www.heroku.com/">Heroku</a>, <a href="https://azure.microsoft.com/en-us/services/app-service/">Microsoft Azure App Service</a>)</td>
+</tr>
+<tr>
+<td>Desacoplamiento</td>
+<td>API Gateway, Service Mesh (por ejemplo, <a href="https://istio.io/">Istio</a>, <a href="https://linkerd.io/">Linkerd</a>)</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 - Sofka
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.indexes", "navigation.footer", "header.autohide", "content.code.annotate", "content.code.select", "content.code.copy", "content.action.edit", "search.share"], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.19047be9.min.js"></script>
+      
+    
+  </body>
+</html>
